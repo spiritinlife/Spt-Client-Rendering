@@ -1,8 +1,9 @@
 var express = require('express'),
 		app = express(),
-		spt = require('./spt.js'),
+		spt = require('./spt/spt.js'),
 		serveStatic = require('serve-static'),
-		blocked = require('blocked')
+		blocked = require('blocked'),
+		path = require('path')
 
 
 blocked(function(ms){
@@ -10,11 +11,8 @@ blocked(function(ms){
 });
 
 //app.use(serveStatic(__dirname))
-app.use(spt(__dirname))
+app.use(spt(path.join(__dirname,"public")))
 
-//app.engine('spt',spt.engine)
-//app.set('views', './'); // specify the views directory
-//app.set('view engine', 'spt'); // register the template engine
 
 app.get('/', function (req, res) {
   res.sptRender('index', {title : "Cool site", manymessages:['a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a'],thisIsTrue: false,message : 'Hellp',messages:['sdsd','aaaa','aaaa','aaaa','aaaa']});

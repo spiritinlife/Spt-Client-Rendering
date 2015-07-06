@@ -7,7 +7,7 @@
 
 <body>
 		<spt>
-		@sptinclude loop
+			@sptinclude partials/loop
 		</spt>
 		<spt>
 
