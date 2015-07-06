@@ -8,7 +8,7 @@ on the <b>client</b>.
 
 # Language Specification
 
-Whenever you want to use the SPT templating language you need to use the <spt></spt> tag.
+Whenever you want to use the SPT templating language you need to use the ```<spt></spt>``` tag.
 The spt language has the following :
 
 - Variable binding
