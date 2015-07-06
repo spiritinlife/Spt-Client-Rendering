@@ -1,6 +1,10 @@
 # Spt-Client-Rendering
 A Client side rendering with pure javascript , written to work with expressjs
+The difference in this library is that while you think the rendering happens in the server it does not.
+It actually injects a js script to every spt file alogn with the data that need to be rendered and it does the rendering
+on the client.
 
+Is that better ? i do not know yet :)
 
 # Language Specification
 
