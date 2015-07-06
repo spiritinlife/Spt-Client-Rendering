@@ -1,0 +1,42 @@
+<html>
+<head>
+		<spt>
+		<title>{{title}}</title>
+		</spt>
+</head>
+
+<body>
+		<spt>
+		@sptinclude loop
+		</spt>
+		<spt>
+
+		<p>{{message}}</p>
+		<p>{{message}}</p>
+		
+		<p>{{if (thisIsTrue) {
+				return message
+			} 
+			else {
+				return 'Oooh'
+			}
+		}}</p>
+	<ul>{{	for m in manymessages '<li> m </li>'}}</ul>
+
+		<p>{{message}}</p>
+		<p>{{message}}</p>
+		
+		<p>{{if (thisIsTrue) {
+				return message
+			}
+			else {
+				return 'Oooh'
+			}
+		}}</p><ul>{{	for m in manymessages '<li> m </li>'}}</ul>
+		</spt>
+
+
+	
+</body>
+
+</html>

@@ -1,0 +1,1 @@
+<ul>{{for m in manymessages '<li> m </li>'}}</ul>
