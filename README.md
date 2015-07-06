@@ -33,11 +33,11 @@ Whenever you want to add something dynamic to the page you use {{}}
 
 # USAGE
 It can be used with express , see the index.js for how.
-<code>
+```
 app.use(spt(path.join(__dirname,"public")))
 
 
 app.get('/', function (req, res) {
   res.sptRender('index', {title : "Cool site", manymessages:['a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a'],thisIsTrue: false,message : 'Hellp',messages:['sdsd','aaaa','aaaa','aaaa','aaaa']});
 })
-</code>
+```
