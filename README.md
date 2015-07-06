@@ -19,16 +19,16 @@ The spt language has the following :
 
 The syntax is the following
 Whenever you want to add something dynamic to the page you use {{}}
-for Variable binding: it is <code>{{myawesomevariable}}</code>
-for loops : it is <code><ul>{{for m in manymessages '<li> m </li>'}}</ul></code>
-for if/else : it is <code><p>{{if (thisIsTrue) {
+-for Variable binding: it is {{myawesomevariable}}
+-for loops : it is <ul>{{for m in manymessages '<li> m </li>'}}</ul>
+-for if/else : it is <p>{{if (thisIsTrue) {
 						return message
 			} 
 			else {
 				return 'Oooh'
 			}
-		}}</p></code>
-for partial spt files : it is <code>@sptinclude filepath</code>
+		}}</p>
+-for partial spt files : it is @sptinclude filepath
 
 
 # USAGE
