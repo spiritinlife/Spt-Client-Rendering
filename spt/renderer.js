@@ -11,19 +11,16 @@
 	
 		var dataReduce = JSON.parse(document.getElementById('hidden-data').innerHTML)	
 		var sptElems = document.getElementsByTagName("spt")	
-
+		var domElems = {}
 		
 		for (var i = sptElems.length; i--;) {
-			var domElems = sptElems[i].getElementsByTagName("*")
+			domElems = sptElems[i].getElementsByTagName("*")
 			for (var j = domElems.length; j--;) {
 					reduce(domElems[j])
 			}
+			sptElems[i].style.display = "block"	
 		}
 		
-		for (var i = 0; i < sptElems.length; i++) {
-				sptElems[i].style.display = "block"	
-		}
-
 	var t1 = performance.now();
 	console.log("Rendering took " + (t1 - t0) + " milliseconds.")
 	
