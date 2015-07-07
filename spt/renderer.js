@@ -1,4 +1,4 @@
-<script>
+//<script>
 	document.addEventListener('DOMContentLoaded',function(e){	
 //		var pattBasic = new RegExp(/{{\s*/);
 //		var pattScript = new RegExp(/\s*<script>\s*/);
@@ -62,4 +62,4 @@
 				}
 			}
 		})
-</script>
+//</script>

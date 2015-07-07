@@ -10,7 +10,7 @@ blocked(function(ms){
   console.log('BLOCKED FOR %sms', ms | 0)
 });
 
-//app.use(serveStatic(__dirname))
+app.use(serveStatic(__dirname))
 app.use(spt(path.join(__dirname,"public")))
 
 

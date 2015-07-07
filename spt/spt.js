@@ -55,15 +55,15 @@ SptIncludeProcedure.prototype._transform = function(chunk, encoding, done) {
 }
 
 
-/**
-*	Read the renderer file for fast use later
-*	store the contents in renderer
-*/
-var renderer = ""
-fs.readFile(__dirname + '/renderer.js',function (e,script) {
-	if (e) return callback(new Error(e))
-	renderer = script
-})
+///**
+//*	Read the renderer file for fast use later
+//*	store the contents in renderer
+//*/
+//var renderer = ""
+//fs.readFile(__dirname + '/renderer.js',function (e,script) {
+//	if (e) return callback(new Error(e))
+//	renderer = script
+//})
 
 /**
  * This function is exposed and it should be used as part of the expressjs middleware.
@@ -103,7 +103,8 @@ function sptEngine(directory){
 			
 			fileStream.on('end',function(){
 				res.write('<div id=\'hidden-data\' style=\'display:none\'>' + JSON.stringify(data) + '</div>')
-				res.end(renderer)
+				res.end("<script src='/spt/renderer.js'></script>")
+				//res.end(renderer)
 			})
 		}
 		
