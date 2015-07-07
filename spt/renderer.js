@@ -1,5 +1,7 @@
 //<script>
 	document.addEventListener('DOMContentLoaded',function(e){	
+		var t0 = performance.now();
+
 //		var pattBasic = new RegExp(/{{\s*/);
 //		var pattScript = new RegExp(/\s*<script>\s*/);
 //		var pattFor = new RegExp(/{{\s*for\s*/);
@@ -8,27 +10,24 @@
 		
 	
 		var dataReduce = JSON.parse(document.getElementById('hidden-data').innerHTML)	
-//		var domHeadElems = document.head.getElementsByTagName("*")
-//		var domBodyElems = document.body.getElementsByTagName("*")
-		var domElems = document.querySelectorAll("spt *")
-
 		var sptElems = document.getElementsByTagName("spt")	
 
-
-//		for (var i = domHeadElems.length; i--;) {
-//				reduce(domHeadElems[i])
-//		}
-
-		for (var i = domElems.length; i--;) {
-				reduce(domElems[i])
+		
+		for (var i = sptElems.length; i--;) {
+			var domElems = sptElems[i].getElementsByTagName("*")
+			for (var j = domElems.length; j--;) {
+					reduce(domElems[j])
+			}
 		}
 		
 		for (var i = 0; i < sptElems.length; i++) {
 				sptElems[i].style.display = "block"	
 		}
 
+	var t1 = performance.now();
+	console.log("Rendering took " + (t1 - t0) + " milliseconds.")
 	
-		function reduce(elem){
+	function reduce(elem){
 			if (( typeof elem.innerHTML == 'undefined' ||  new RegExp(/\s*<script>\s*/).test(elem.innerHTML) ) )
 					return
 				
