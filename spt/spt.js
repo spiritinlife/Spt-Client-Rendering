@@ -15,6 +15,7 @@
 var fs   = require('fs'),
 		util = require('util'),
 		path = require('path'),
+		replaceStream = require('replacestream'),
 		Transform = require('stream').Transform
 
 
@@ -44,26 +45,17 @@ util.inherits(SptIncludeProcedure, Transform)
  * This is the function that does the magic and it does not get called by the user
  */
 SptIncludeProcedure.prototype._transform = function(chunk, encoding, done) {
-	var that = this
+	var self = this
+
+	chunk = chunk.toString().replace(/@sptinclude (.*)/g, function(match, filename) {
+		return fs.readFileSync(path.join(self.directory,filename + ".spt"))
+	})
 	
-	chunk = new Buffer(chunk.toString().replace(/(@sptinclude) (.*)/, function(match, p, filename) {
-		return fs.readFileSync(path.join(that.directory,filename + ".spt"))
-	}))
-	
-	this.push(chunk,encoding)
+	this.push(chunk,'utf8')
 	done()   
 }
 
 
-///**
-//*	Read the renderer file for fast use later
-//*	store the contents in renderer
-//*/
-//var renderer = ""
-//fs.readFile(__dirname + '/renderer.js',function (e,script) {
-//	if (e) return callback(new Error(e))
-//	renderer = script
-//})
 
 /**
  * This function is exposed and it should be used as part of the expressjs middleware.
@@ -93,9 +85,11 @@ function sptEngine(directory){
     	res.setHeader('Content-Type', 'text/html; charset=UTF-8')
 			var fileStream = fs.createReadStream(path.join(sptEngine.directory,filepath + ".spt"))
 			
+			// this hides the spt tags until script finished rendering
 			res.write("<style>spt{ display:none; } </style>")
 			
-			fileStream.pipe(new SptIncludeProcedure({directory:sptEngine.directory})).pipe(res, {end : false});
+			fileStream.pipe(new SptIncludeProcedure({ directory : sptEngine.directory })).pipe(res, {end : false});
+			
 			
 			fileStream.on('error',function(e){
 				return next(new Error(e))
